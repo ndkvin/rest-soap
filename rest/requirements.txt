@@ -1,0 +1,5 @@
+numpy
+fastapi
+uvicorn
+mysql-connector-python
+python-dotenv
