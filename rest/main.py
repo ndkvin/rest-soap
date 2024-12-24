@@ -24,6 +24,7 @@ def get_mahasiswa():
             "nama": row[1],
             "nim": row[2]
         })
+        
     return {
         "detail": {
             "status": "success",
@@ -33,10 +34,16 @@ def get_mahasiswa():
     }
 
 @app.get('/mahasiswa/{id}')
-def get_mahasiswa(id: int): 
+def get_mahasiswa_detail(id: int): 
     query = "SELECT * FROM mahasiswa where id = %s"
     mahasiswa = db.execute_query(query, (id,))
     
+    if not mahasiswa:
+        raise HTTPException(status_code=400, detail={
+            "status": "error",
+            "message": "Data tidak ditemukan"
+        })
+        
     return {
         "detail": {
             "status": "success",
@@ -166,7 +173,7 @@ class MataKuliah(BaseModel):
     sks: int
 
 @app.get('/matakuliah')
-def get_mahasiswa():
+def get_mata_kuliah():
     query = "SELECT * FROM mata_kuliah"
     mata_kuliah = db.execute_query(query)
     
@@ -187,7 +194,7 @@ def get_mahasiswa():
     }
 
 @app.get('/matakuliah/{id}')
-def get_mata_kuliah(id: int): 
+def get_mata_kuliah_detail(id: int): 
     query = "SELECT * FROM mata_kuliah where id = %s"
     mata_kuliah = db.execute_query(query, (id,))
     
