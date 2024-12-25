@@ -1,0 +1,19 @@
+{
+  "name": "soap-server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "http": "^0.0.1-security",
+    "nodemon": "^3.1.9",
+    "soap": "^1.1.7"
+  }
+}

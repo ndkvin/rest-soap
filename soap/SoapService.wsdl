@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:tns="http://localhost:8000/wsdl/"
+             targetNamespace="http://localhost:8000/wsdl/"
+             name="wsdl">
+
+   <!-- Hello  -->
+   <message name="sayHelloRequest">
+      <part name="name" type="xsd:string"/>
+   </message>
+
+   <message name="sayHelloResponse">
+      <part name="greeting" type="xsd:string"/>
+   </message>
+
+   <message name="sayHelloTwoRequest">
+      <part name="name" type="xsd:string"/>
+   </message>
+
+   <message name="sayHelloTwoResponse">
+      <part name="greeting" type="xsd:string"/>
+   </message>
+
+
+
+   <!-- Mahasiswa CRUD Request Response -->
+   <message name="create_mahasiswa_Request">
+      <part name="nim" type="xsd:string"/>
+      <part name="nama" type="xsd:string"/>
+      <part name="prodi" type="xsd:string"/>
+   </message>
+
+   <message name="create_mahasiswa_Response">
+      <part name="message" type="xsd:string"/>
+   </message>
+
+   <message name="read_mahasiswa_Request">
+      <part name="nim" type="xsd:string"/>
+   </message>
+
+   <message name="read_mahasiswa_Response">
+      <part name="message" type="xsd:string"/>
+   </message>
+
+   <message name="update_mahasiswa_Request">
+      <part name="nim" type="xsd:string"/>
+      <part name="nama" type="xsd:string"/>
+      <part name="prodi" type="xsd:string"/>
+   </message>
+
+   <message name="update_mahasiswa_Response">
+      <part name="message" type="xsd:string"/>
+   </message>
+
+   <message name="delete_mahasiswa_Request">
+      <part name="nim" type="xsd:string"/>
+   </message>
+
+   <message name="delete_mahasiswa_Response">
+      <part name="message" type="xsd:string"/>
+   </message>
+
+   <message name="read_all_mahasiswa_Request">
+      <part name="empty" type="xsd:string"/>
+   </message>
+
+   <message name="read_all_mahasiswa_Response">
+      <part name="message" type="xsd:string"/>
+   </message>
+
+   <!-- PortType --> 
+   <portType name="MahasiswaPortType">
+      <operation name="sayHello">
+         <input message="tns:sayHelloRequest"/>
+         <output message="tns:sayHelloResponse"/>
+      </operation>
+      <operation name="sayHelloTwo">
+         <input message="tns:sayHelloTwoRequest"/>
+         <output message="tns:sayHelloTwoResponse"/>
+      </operation>
+
+       <operation name="create_mahasiswa">
+         <input message="tns:create_mahasiswa_Request"/>
+         <output message="tns:create_mahasiswa_Response"/>
+      </operation>
+
+      <operation name="read_mahasiswa">
+         <input message="tns:read_mahasiswa_Request"/>
+         <output message="tns:read_mahasiswa_Response"/>
+      </operation>
+
+      <operation name="update_mahasiswa">
+         <input message="tns:update_mahasiswa_Request"/>
+         <output message="tns:update_mahasiswa_Response"/>
+      </operation>
+
+      <operation name="delete_mahasiswa">
+         <input message="tns:delete_mahasiswa_Request"/>
+         <output message="tns:delete_mahasiswa_Response"/>
+      </operation>
+
+      <operation name="read_all_mahasiswa">
+         <input message="tns:read_all_mahasiswa_Request"/>
+         <output message="tns:read_all_mahasiswa_Response"/>
+      </operation>
+   </portType>
+
+   <!-- Binding -->
+   <binding name="MahasiswaBinding" type="tns:MahasiswaPortType">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="sayHello">
+         <soap:operation soapAction="http://localhost:8000/wsdl/sayHello"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+      <operation name="sayHelloTwo">
+         <soap:operation soapAction="http://localhost:8000/wsdl/sayHelloTwo"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+
+       <operation name="create_mahasiswa">
+         <soap:operation soapAction="http://localhost:8000/wsdl/create_mahasiswa"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+
+      <operation name="read_mahasiswa">
+         <soap:operation soapAction="http://localhost:8000/wsdl/read_mahasiswa"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+
+      <operation name="update_mahasiswa">
+         <soap:operation soapAction="http://localhost:8000/wsdl/update_mahasiswa"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+
+      <operation name="delete_mahasiswa">
+         <soap:operation soapAction="http://localhost:8000/wsdl/delete_mahasiswa"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+
+      <operation name="read_all_mahasiswa">
+         <soap:operation soapAction="http://localhost:8000/wsdl/read_all_mahasiswa"/>
+         <input>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://localhost:8000/wsdl/"/>
+         </output>
+      </operation>
+   </binding>
+
+ 
+   <!-- Service -->
+   <service name="MahasiswaService">
+      <port binding="tns:MahasiswaBinding" name="MahasiswaPort">
+         <soap:address location="http://localhost:8000/wsdl"/>
+      </port>
+   </service>
+</definitions>
