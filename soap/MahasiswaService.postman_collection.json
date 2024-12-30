@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "8557971a-fdcf-41b2-bf95-5517f388140d",
+		"name": "MahasiswaService",
+		"description": "\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25660433"
+	},
+	"item": [
+		{
+			"name": "sayHello",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/sayHello"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sayHelloRequest>\n      <name>string</name>\n    </sayHelloRequest>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sayHello response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/sayHello"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sayHelloRequest>\n      <name>string</name>\n    </sayHelloRequest>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sayHelloResponse>\n      <greeting>string</greeting>\n    </sayHelloResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		},
+		{
+			"name": "sayHelloTwo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/sayHelloTwo"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sayHelloTwoRequest>\n      <name>string</name>\n    </sayHelloTwoRequest>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sayHelloTwo response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/sayHelloTwo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sayHelloTwoRequest>\n      <name>string</name>\n    </sayHelloTwoRequest>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sayHelloTwoResponse>\n      <greeting>string</greeting>\n    </sayHelloTwoResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		},
+		{
+			"name": "create_mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/create_mahasiswa"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <create_mahasiswa_Request>\n      <nim>string</nim>\n      <nama>string</nama>\n      <prodi>string</prodi>\n    </create_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create_mahasiswa response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/create_mahasiswa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <create_mahasiswa_Request>\n      <nim>string</nim>\n      <nama>string</nama>\n      <prodi>string</prodi>\n    </create_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <create_mahasiswa_Response>\n      <message>string</message>\n    </create_mahasiswa_Response>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		},
+		{
+			"name": "read_mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/read_mahasiswa"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <read_mahasiswa_Request>\n      <nim>string</nim>\n    </read_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "read_mahasiswa response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/read_mahasiswa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <read_mahasiswa_Request>\n      <nim>string</nim>\n    </read_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <read_mahasiswa_Response>\n      <message>string</message>\n    </read_mahasiswa_Response>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		},
+		{
+			"name": "update_mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/update_mahasiswa"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <update_mahasiswa_Request>\n      <nim>string</nim>\n      <nama>string</nama>\n      <prodi>string</prodi>\n    </update_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update_mahasiswa response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/update_mahasiswa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <update_mahasiswa_Request>\n      <nim>string</nim>\n      <nama>string</nama>\n      <prodi>string</prodi>\n    </update_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <update_mahasiswa_Response>\n      <message>string</message>\n    </update_mahasiswa_Response>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		},
+		{
+			"name": "delete_mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/delete_mahasiswa"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <delete_mahasiswa_Request>\n      <nim>string</nim>\n    </delete_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete_mahasiswa response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/delete_mahasiswa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <delete_mahasiswa_Request>\n      <nim>string</nim>\n    </delete_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <delete_mahasiswa_Response>\n      <message>string</message>\n    </delete_mahasiswa_Response>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		},
+		{
+			"name": "read_all_mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "http://localhost:8000/wsdl/read_all_mahasiswa"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <read_all_mahasiswa_Request>\n      <empty>string</empty>\n    </read_all_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MahasiswaPortBaseUrl}}/wsdl",
+					"host": [
+						"{{MahasiswaPortBaseUrl}}"
+					],
+					"path": [
+						"wsdl"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "read_all_mahasiswa response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "http://localhost:8000/wsdl/read_all_mahasiswa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <read_all_mahasiswa_Request>\n      <empty>string</empty>\n    </read_all_mahasiswa_Request>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"wsdl"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <read_all_mahasiswa_Response>\n      <message>string</message>\n    </read_all_mahasiswa_Response>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "MahasiswaPortBaseUrl",
+			"value": "http://localhost:8000",
+			"type": "any"
+		}
+	]
+}
