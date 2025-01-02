@@ -1,0 +1,7 @@
+numpy
+mysql-connector-python
+python-dotenv
+spyne
+fastapi
+uvicorn
+lxml
