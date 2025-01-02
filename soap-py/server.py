@@ -8,6 +8,31 @@ from spyne.error import Fault
 from database.database import db
 from spyne.protocol.json import JsonDocument
 
+
+def validate_inputs(fields, alpha_fields=None):
+    """
+    Validates input fields for emptiness and optional alphabetic constraints.
+
+    :param fields: A dictionary where keys are field names and values are field values.
+    :param alpha_fields: A list of field names that must only contain alphabetic characters.
+    :param numeric_fields: A list of field names that must only contain numeric characters.
+    """
+    alpha_fields = alpha_fields or []
+    missing_fields = [name for name, value in fields.items() if not value]
+    non_alpha_fields = [name for name in alpha_fields if name in fields and not fields[name].replace(' ', '').isalpha()]
+
+    if missing_fields:
+        raise Fault(
+            faultcode="Client", 
+            faultstring=f"{', '.join(missing_fields)} tidak boleh kosong".capitalize()
+        )
+    if non_alpha_fields:
+        raise Fault(
+            faultcode="Client", 
+            faultstring=f"{', '.join(non_alpha_fields)} harus berupa huruf".capitalize()
+        )
+
+
 class Mahasiswa(ComplexModel):
     id = Integer
     nama = Unicode
@@ -50,6 +75,8 @@ class MahasiswaService(ServiceBase):
     def create_mahasiswa(ctx, nim, nama):
         if len(nim) != 8:
             raise Fault(faultcode="Client", faultstring="NIM harus terdiri dari 8 digit angka")
+        
+        validate_inputs({"nama": nama, "NIM": nim}, alpha_fields=["nama"])
 
         query_check = "SELECT * FROM mahasiswa WHERE nim = %s"
         results = db.execute_query(query_check, (nim,))
@@ -71,6 +98,9 @@ class MahasiswaService(ServiceBase):
     
     @rpc(Integer, _returns=AnyDict)
     def get_mahasiswa_by_id(ctx, id):
+
+        validate_inputs({"id": id})
+
         query = "SELECT * FROM mahasiswa where id = %s"
         mahasiswa = db.execute_query(query, (id,))
         
@@ -91,6 +121,8 @@ class MahasiswaService(ServiceBase):
     
     @rpc(Unicode, Unicode, Integer, _returns=AnyDict)
     def update_mahasiswa(ctx, nim, nama, id):  
+
+        validate_inputs({"id": id})
         query_check = "SELECT * FROM mahasiswa WHERE id = %s"
         
         results = db.execute_query(query_check, (id,))
@@ -109,6 +141,7 @@ class MahasiswaService(ServiceBase):
             if results[0][0] != id:
                 raise Fault(faultcode="Client", faultstring="NIM sudah digunakan")
             
+        validate_inputs({"nama": nama, "NIM": nim}, alpha_fields=["nama"])
         query = "UPDATE mahasiswa SET nama = %s, nim = %s WHERE id = %s"
         
         cursor = db.execute_query(query, (nama, nim, id), commit=True)
@@ -126,6 +159,8 @@ class MahasiswaService(ServiceBase):
     
     @rpc(Integer, _returns=AnyDict)
     def delete_mahasiswa(ctx, id):
+
+        validate_inputs({"id": id})
         query_check = "SELECT * FROM mahasiswa WHERE id = %s"
         
         results = db.execute_query(query_check, (id,))
@@ -177,7 +212,10 @@ class MatakuliahService(ServiceBase):
     
     @rpc(Integer, _returns=AnyDict)
     def get_matakuliah_by_id(ctx, id):
+
+        validate_inputs({"id": id})
         query = "SELECT * FROM mata_kuliah where id = %s"
+
         mata_kuliah = db.execute_query(query, (id,))
         
         if not mata_kuliah:
@@ -198,6 +236,8 @@ class MatakuliahService(ServiceBase):
         
     @rpc(Unicode, Unicode, Integer, _returns=AnyDict)
     def create_matakuliah(ctx, nama, semester, sks):
+
+        validate_inputs({"nama": nama, "semester": semester, "SKS": sks}, alpha_fields=["nama"])
         query = "INSERT INTO mata_kuliah (nama, sks, semester) VALUES (%s, %s, %s)"
         cursor = db.execute_query(query, (nama, sks, semester), commit=True)
         
@@ -214,7 +254,8 @@ class MatakuliahService(ServiceBase):
         }
     
     @rpc(Integer, Unicode, Unicode, Integer, _returns=AnyDict)
-    def update_matakuliah(ctx, id, nama, semester, sks):  
+    def update_matakuliah(ctx, id, nama, semester, sks): 
+        validate_inputs({"id": id})
         query_check = "SELECT * FROM mata_kuliah WHERE id = %s"
     
         results = db.execute_query(query_check, (id,))
@@ -222,6 +263,7 @@ class MatakuliahService(ServiceBase):
         if not results:
             raise Fault(faultcode="Client", faultstring="Data tidak ditemukan")
     
+        validate_inputs({"nama": nama, "semester": semester, "SKS": sks}, alpha_fields=["nama"])
         query = "UPDATE mata_kuliah SET nama = %s, sks = %s, semester = %s WHERE id = %s"
         
         cursor = db.execute_query(query, (nama, sks, semester, id), commit=True)
@@ -240,6 +282,9 @@ class MatakuliahService(ServiceBase):
     
     @rpc(Integer, _returns=AnyDict)
     def delete_matakuliah(ctx, id):
+
+        validate_inputs({"id": id})
+
         query_check = "SELECT * FROM mata_kuliah WHERE id = %s"
         
         results = db.execute_query(query_check, (id,))
@@ -298,6 +343,9 @@ class MahasiswaMataKuliahService(ServiceBase):
 
     @rpc(Integer, _returns=AnyDict)
     def get_mahasiswa_matakuliah_by_id(ctx, id):
+
+        validate_inputs({"id": id})
+
         query = '''SELECT 
             mahasiswa_mata_kuliah.id,
             mahasiswa.nama nama_mahasiswa,
@@ -332,6 +380,9 @@ class MahasiswaMataKuliahService(ServiceBase):
     
     @rpc(Unicode, Unicode, _returns=AnyDict)
     def create_mahasiswa_matakuliah(ctx, mahasiswa_id, mata_kuliah_id):
+
+        validate_inputs({"mahasiswa_id": mahasiswa_id, "mata_kuliah_id": mata_kuliah_id})
+
         query_check = "SELECT * FROM mahasiswa WHERE id = %s"
         
         results = db.execute_query(query_check, (mahasiswa_id,))
@@ -364,6 +415,9 @@ class MahasiswaMataKuliahService(ServiceBase):
     
     @rpc(Integer, Unicode, Unicode, _returns=AnyDict)
     def update_mahasiswa_matakuliah(ctx, id, mahasiswa_id, mata_kuliah_id):
+
+        
+        validate_inputs({"mahasiswa_id": mahasiswa_id, "mata_kuliah_id": mata_kuliah_id, "id": id})
         query = '''SELECT 
             mahasiswa_mata_kuliah.id,
             mahasiswa.nama nama_mahasiswa,
@@ -412,6 +466,9 @@ class MahasiswaMataKuliahService(ServiceBase):
     
     @rpc(Integer, _returns=AnyDict)
     def delete_mahasiswa_matakuliah(ctx, id):
+
+        validate_inputs({"id": id})
+
         query = '''SELECT 
             mahasiswa_mata_kuliah.id,
             mahasiswa.nama nama_mahasiswa,
