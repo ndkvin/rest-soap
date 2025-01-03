@@ -379,9 +379,9 @@ class MahasiswaMataKuliahService(ServiceBase):
         }
     
     @rpc(Unicode, Unicode, _returns=AnyDict)
-    def create_mahasiswa_matakuliah(ctx, mahasiswa_id, mata_kuliah_id):
+    def create_mahasiswa_matakuliah(ctx, mahasiswa_id, matakuliah_id):
 
-        validate_inputs({"mahasiswa_id": mahasiswa_id, "mata_kuliah_id": mata_kuliah_id})
+        validate_inputs({"mahasiswa_id": mahasiswa_id, "mata_kuliah_id": matakuliah_id})
 
         query_check = "SELECT * FROM mahasiswa WHERE id = %s"
         
@@ -392,7 +392,7 @@ class MahasiswaMataKuliahService(ServiceBase):
         
         query_check = "SELECT * FROM mata_kuliah WHERE id = %s"
         
-        results = db.execute_query(query_check, (mata_kuliah_id,))
+        results = db.execute_query(query_check, (matakuliah_id,))
 
         if not results:
             raise Fault(faultcode="Client", faultstring="Mata kuliah tidak ditemukan")
@@ -400,7 +400,7 @@ class MahasiswaMataKuliahService(ServiceBase):
         query = "UPDATE mata_kuliah SET nama = %s, sks = %s, semester = %s WHERE id = %s"
         
         query = "INSERT INTO mahasiswa_mata_kuliah (mahasiswa_id, mata_kuliah_id) VALUES (%s, %s)"
-        cursor = db.execute_query(query, (mahasiswa_id, mata_kuliah_id), commit=True)
+        cursor = db.execute_query(query, (mahasiswa_id, matakuliah_id), commit=True)
         
         return {
             "detail": {
@@ -408,16 +408,16 @@ class MahasiswaMataKuliahService(ServiceBase):
                 "message": "Data berhasil ditambahkan",
                 "data": {
                     "mahasiswa_id": mahasiswa_id,
-                    "mata_kuliah_id": mata_kuliah_id,
+                    "mata_kuliah_id": matakuliah_id,
                 },
             },
         }
     
     @rpc(Integer, Unicode, Unicode, _returns=AnyDict)
-    def update_mahasiswa_matakuliah(ctx, id, mahasiswa_id, mata_kuliah_id):
+    def update_mahasiswa_matakuliah(ctx, id, mahasiswa_id, matakuliah_id):
 
         
-        validate_inputs({"mahasiswa_id": mahasiswa_id, "mata_kuliah_id": mata_kuliah_id, "id": id})
+        validate_inputs({"mahasiswa_id": mahasiswa_id, "mata_kuliah_id": matakuliah_id, "id": id})
         query = '''SELECT 
             mahasiswa_mata_kuliah.id,
             mahasiswa.nama nama_mahasiswa,
@@ -444,14 +444,14 @@ class MahasiswaMataKuliahService(ServiceBase):
         
         query_check = "SELECT * FROM mata_kuliah WHERE id = %s"
         
-        results = db.execute_query(query_check, (mata_kuliah_id,))
+        results = db.execute_query(query_check, (matakuliah_id,))
 
         if not results:
             raise Fault(faultcode="Client", faultstring="Mata kuliah tidak ditemukan")
         
         query = "UPDATE mahasiswa_mata_kuliah SET mahasiswa_id = %s, mata_kuliah_id = %s WHERE id = %s"
         
-        cursor = db.execute_query(query, (mahasiswa_id, mata_kuliah_id, id), commit=True)
+        cursor = db.execute_query(query, (mahasiswa_id, matakuliah_id, id), commit=True)
         
         return {
             "detail": {
@@ -459,7 +459,7 @@ class MahasiswaMataKuliahService(ServiceBase):
                 "message": "Data berhasil diperbarui",
                 "data": {
                     "mahasiswa_id": mahasiswa_id,
-                    "mata_kuliah_id": mata_kuliah_id,
+                    "mata_kuliah_id": matakuliah_id,
                 },
             },
         }
